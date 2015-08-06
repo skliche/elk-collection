@@ -1,0 +1,704 @@
+{
+  "title": "isi Template",
+  "services": {
+    "query": {
+      "list": {
+        "0": {
+          "id": 0,
+          "color": "#6D1F62",
+          "alias": "WS Discovery",
+          "pin": true,
+          "type": "lucene",
+          "enable": true,
+          "query": "request:*\\.xsd OR *wsdl"
+        },
+        "1": {
+          "id": 1,
+          "color": "#EAB839",
+          "alias": "Static Content",
+          "pin": true,
+          "type": "lucene",
+          "enable": true,
+          "query": "request: *\\.css OR *Css OR *\\.js OR *\\.png OR *\\.gif OR *\\.html OR *\\.htm"
+        },
+        "2": {
+          "id": 2,
+          "color": "#6ED0E0",
+          "alias": "isi WebService",
+          "pin": true,
+          "type": "lucene",
+          "enable": true,
+          "query": "request: \"//is-ws\" AND NOT (request:*\\.xsd OR *wsdl)"
+        },
+        "3": {
+          "id": 3,
+          "color": "#EF843C",
+          "alias": "isi Web request",
+          "pin": true,
+          "type": "lucene",
+          "enable": true,
+          "query": "request: \"is-web\" AND NOT (request: *\\.css OR *Css OR *.js OR *\\.png OR *\\.gif OR *\\.html)"
+        },
+        "4": {
+          "id": 4,
+          "color": "#E24D42",
+          "alias": "BPM exposed WebService",
+          "pin": true,
+          "type": "lucene",
+          "enable": true,
+          "query": "request:  \"//teamworks//webservices\""
+        },
+        "5": {
+          "id": 5,
+          "color": "#1F78C1",
+          "alias": "BPM executeServiceByName",
+          "pin": true,
+          "type": "lucene",
+          "enable": true,
+          "query": "request: \"//teamworks//executeServiceByName\""
+        },
+        "6": {
+          "id": 6,
+          "color": "#BA43A9",
+          "alias": "BPM ajaxCoach",
+          "pin": true,
+          "type": "lucene",
+          "enable": true,
+          "query": "request:\"//teamworks//ajaxCoach\""
+        },
+        "7": {
+          "id": 7,
+          "color": "#705DA0",
+          "alias": "BPM REST API",
+          "pin": true,
+          "type": "lucene",
+          "enable": true,
+          "query": "request:\"//rest//bpm\""
+        },
+        "8": {
+          "id": 8,
+          "color": "#508642",
+          "alias": "BPM bayeux channel",
+          "pin": true,
+          "type": "lucene",
+          "enable": true,
+          "query": "request:\"cometd\""
+        },
+        "9": {
+          "id": 9,
+          "color": "#CCA300",
+          "alias": "JEE login",
+          "pin": true,
+          "type": "lucene",
+          "enable": true,
+          "query": "request: \"j_security_check\""
+        },
+        "12": {
+          "id": 12,
+          "color": "#E0752D",
+          "alias": "Responsetime > 10 s",
+          "pin": true,
+          "type": "lucene",
+          "enable": false,
+          "query": "responsetime: [10000000 TO *]"
+        },
+        "13": {
+          "id": 13,
+          "color": "#F2C96D",
+          "alias": "Responsetime > 5 s",
+          "pin": true,
+          "type": "lucene",
+          "enable": false,
+          "query": "responsetime: [5000000 TO *]"
+        },
+        "14": {
+          "id": 14,
+          "color": "#7EB26D",
+          "alias": "Responsetime < 5s",
+          "pin": true,
+          "type": "lucene",
+          "enable": false,
+          "query": "responsetime: [0 TO 4999999]"
+        },
+        "15": {
+          "id": 15,
+          "color": "#EA6460",
+          "alias": "Responsetime > 20s",
+          "pin": true,
+          "type": "lucene",
+          "enable": false,
+          "query": "responsetime: [20000000 TO *]"
+        },
+        "16": {
+          "id": 16,
+          "color": "#BF1B00",
+          "alias": "Responsetime > 30s",
+          "pin": true,
+          "type": "lucene",
+          "enable": false,
+          "query": "responsetime: [30000000 TO *]"
+        }
+      },
+      "ids": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        12,
+        13,
+        14,
+        15,
+        16
+      ]
+    },
+    "filter": {
+      "list": {
+        "0": {
+          "type": "field",
+          "field": "request",
+          "query": "*wsdl OR *xsd",
+          "mandate": "mustNot",
+          "active": false,
+          "alias": "",
+          "id": 0
+        },
+        "1": {
+          "type": "time",
+          "field": "@timestamp",
+          "from": "now-30d",
+          "to": "now",
+          "mandate": "must",
+          "active": true,
+          "alias": "",
+          "id": 1
+        }
+      },
+      "ids": [
+        0,
+        1
+      ]
+    }
+  },
+  "rows": [
+    {
+      "title": "",
+      "height": "300px",
+      "editable": true,
+      "collapse": false,
+      "collapsable": true,
+      "panels": [
+        {
+          "span": 12,
+          "editable": true,
+          "type": "histogram",
+          "loadingEditor": false,
+          "mode": "count",
+          "time_field": "@timestamp",
+          "value_field": null,
+          "x-axis": true,
+          "y-axis": true,
+          "scale": 1,
+          "y_format": "none",
+          "grid": {
+            "max": null,
+            "min": 0
+          },
+          "queries": {
+            "mode": "all",
+            "ids": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9
+            ]
+          },
+          "annotate": {
+            "enable": false,
+            "query": "*",
+            "size": 20,
+            "field": "_type",
+            "sort": [
+              "_score",
+              "desc"
+            ]
+          },
+          "auto_int": true,
+          "resolution": 100,
+          "interval": "12h",
+          "intervals": [
+            "auto",
+            "1s",
+            "1m",
+            "5m",
+            "10m",
+            "30m",
+            "1h",
+            "3h",
+            "12h",
+            "1d",
+            "1w",
+            "1y"
+          ],
+          "lines": true,
+          "fill": 0,
+          "linewidth": 3,
+          "points": false,
+          "pointradius": 5,
+          "bars": false,
+          "stack": false,
+          "spyable": true,
+          "zoomlinks": false,
+          "options": false,
+          "legend": true,
+          "show_query": true,
+          "interactive": true,
+          "legend_counts": true,
+          "timezone": "browser",
+          "percentage": false,
+          "zerofill": true,
+          "derivative": false,
+          "tooltip": {
+            "value_type": "cumulative",
+            "query_as_alias": true
+          },
+          "title": "Number of requests"
+        }
+      ],
+      "notice": false
+    },
+    {
+      "title": "",
+      "height": "300px",
+      "editable": true,
+      "collapse": false,
+      "collapsable": true,
+      "panels": [
+        {
+          "span": 12,
+          "editable": true,
+          "type": "histogram",
+          "loadingEditor": false,
+          "mode": "max",
+          "time_field": "@timestamp",
+          "value_field": "responsetime",
+          "x-axis": true,
+          "y-axis": true,
+          "scale": "0.000001",
+          "y_format": "none",
+          "grid": {
+            "max": null,
+            "min": 0
+          },
+          "queries": {
+            "mode": "all",
+            "ids": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9
+            ]
+          },
+          "annotate": {
+            "enable": false,
+            "query": "*",
+            "size": 20,
+            "field": "_type",
+            "sort": [
+              "_score",
+              "desc"
+            ]
+          },
+          "auto_int": true,
+          "resolution": 100,
+          "interval": "12h",
+          "intervals": [
+            "auto",
+            "1s",
+            "1m",
+            "5m",
+            "10m",
+            "30m",
+            "1h",
+            "3h",
+            "12h",
+            "1d",
+            "1w",
+            "1y"
+          ],
+          "lines": false,
+          "fill": 0,
+          "linewidth": 1,
+          "points": false,
+          "pointradius": 5,
+          "bars": true,
+          "stack": false,
+          "spyable": true,
+          "zoomlinks": false,
+          "options": false,
+          "legend": true,
+          "show_query": true,
+          "interactive": true,
+          "legend_counts": true,
+          "timezone": "browser",
+          "percentage": false,
+          "zerofill": false,
+          "derivative": false,
+          "tooltip": {
+            "value_type": "cumulative",
+            "query_as_alias": true
+          },
+          "title": "Max Response Time (seconds)",
+          "scaleSeconds": false
+        }
+      ],
+      "notice": false
+    },
+    {
+      "title": "",
+      "height": "300px",
+      "editable": true,
+      "collapse": false,
+      "collapsable": true,
+      "panels": [
+        {
+          "error": false,
+          "span": 3,
+          "editable": true,
+          "type": "terms",
+          "loadingEditor": false,
+          "field": "verb",
+          "exclude": [],
+          "missing": false,
+          "other": false,
+          "size": 10,
+          "order": "count",
+          "style": {
+            "font-size": "10pt"
+          },
+          "donut": false,
+          "tilt": false,
+          "labels": true,
+          "arrangement": "horizontal",
+          "chart": "pie",
+          "counter_pos": "above",
+          "spyable": true,
+          "queries": {
+            "mode": "all",
+            "ids": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9
+            ]
+          },
+          "tmode": "terms",
+          "tstat": "total",
+          "valuefield": "",
+          "title": "HTTP Method"
+        },
+        {
+          "error": false,
+          "span": 3,
+          "editable": true,
+          "type": "terms",
+          "loadingEditor": false,
+          "field": "response",
+          "exclude": [],
+          "missing": false,
+          "other": false,
+          "size": 10,
+          "order": "count",
+          "style": {
+            "font-size": "10pt"
+          },
+          "donut": false,
+          "tilt": false,
+          "labels": true,
+          "arrangement": "horizontal",
+          "chart": "pie",
+          "counter_pos": "above",
+          "spyable": true,
+          "queries": {
+            "mode": "all",
+            "ids": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9
+            ]
+          },
+          "tmode": "terms",
+          "tstat": "total",
+          "valuefield": "",
+          "title": "Response code"
+        },
+        {
+          "error": false,
+          "span": 6,
+          "editable": true,
+          "type": "terms",
+          "loadingEditor": false,
+          "field": "clientip",
+          "exclude": [],
+          "missing": false,
+          "other": false,
+          "size": 10,
+          "order": "count",
+          "style": {
+            "font-size": "10pt"
+          },
+          "donut": false,
+          "tilt": false,
+          "labels": true,
+          "arrangement": "horizontal",
+          "chart": "pie",
+          "counter_pos": "above",
+          "spyable": true,
+          "queries": {
+            "mode": "all",
+            "ids": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9
+            ]
+          },
+          "tmode": "terms",
+          "tstat": "total",
+          "valuefield": "",
+          "title": "Client IP"
+        },
+        {
+          "error": false,
+          "span": 12,
+          "editable": true,
+          "type": "terms",
+          "loadingEditor": false,
+          "field": "request",
+          "exclude": [],
+          "missing": false,
+          "other": false,
+          "size": 20,
+          "order": "count",
+          "style": {
+            "font-size": "10pt"
+          },
+          "donut": false,
+          "tilt": false,
+          "labels": true,
+          "arrangement": "horizontal",
+          "chart": "bar",
+          "counter_pos": "above",
+          "spyable": true,
+          "queries": {
+            "mode": "all",
+            "ids": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9
+            ]
+          },
+          "tmode": "terms",
+          "tstat": "total",
+          "valuefield": "",
+          "title": "Request"
+        }
+      ],
+      "notice": false
+    },
+    {
+      "title": "",
+      "height": "150px",
+      "editable": true,
+      "collapse": false,
+      "collapsable": true,
+      "panels": [
+        {
+          "error": false,
+          "span": 12,
+          "editable": true,
+          "type": "table",
+          "loadingEditor": false,
+          "size": 100,
+          "pages": 5,
+          "offset": 0,
+          "sort": [
+            "responsetime",
+            "desc"
+          ],
+          "overflow": "min-height",
+          "fields": [
+            "@timestamp",
+            "clientip",
+            "verb",
+            "request",
+            "response",
+            "responsetime"
+          ],
+          "highlight": [],
+          "sortable": true,
+          "header": true,
+          "paging": true,
+          "field_list": false,
+          "all_fields": false,
+          "trimFactor": 300,
+          "localTime": true,
+          "timeField": "@timestamp",
+          "spyable": true,
+          "queries": {
+            "mode": "all",
+            "ids": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9
+            ]
+          },
+          "style": {
+            "font-size": "9pt"
+          },
+          "normTimes": true
+        }
+      ],
+      "notice": false
+    }
+  ],
+  "editable": true,
+  "failover": false,
+  "index": {
+    "interval": "day",
+    "pattern": "[logstash-ncsa-]YYYY.MM.DD",
+    "default": "logstash-ncsa",
+    "warm_fields": true
+  },
+  "style": "dark",
+  "panel_hints": true,
+  "pulldowns": [
+    {
+      "type": "query",
+      "collapse": false,
+      "notice": false,
+      "enable": true,
+      "query": "*",
+      "pinned": true,
+      "history": [
+        "responsetime: [30000000 TO *]",
+        "responsetime: [20000000 TO *]",
+        "responsetime: [0 TO 4999999]",
+        "responsetime: [5000000 TO *]",
+        "responsetime: [10000000 TO *]",
+        "request: \"j_security_check\"",
+        "request:\"cometd\"",
+        "request:\"//rest//bpm\"",
+        "request:\"//teamworks//ajaxCoach\"",
+        "request: \"//teamworks//executeServiceByName\""
+      ],
+      "remember": 10
+    },
+    {
+      "type": "filtering",
+      "collapse": true,
+      "notice": true,
+      "enable": true
+    }
+  ],
+  "nav": [
+    {
+      "type": "timepicker",
+      "collapse": false,
+      "notice": false,
+      "enable": true,
+      "status": "Stable",
+      "time_options": [
+        "5m",
+        "15m",
+        "1h",
+        "6h",
+        "12h",
+        "24h",
+        "2d",
+        "7d",
+        "30d"
+      ],
+      "refresh_intervals": [
+        "5s",
+        "10s",
+        "30s",
+        "1m",
+        "5m",
+        "15m",
+        "30m",
+        "1h",
+        "2h",
+        "1d"
+      ],
+      "timefield": "@timestamp",
+      "now": true,
+      "filter_id": 1
+    }
+  ],
+  "loader": {
+    "save_gist": false,
+    "save_elasticsearch": true,
+    "save_local": true,
+    "save_default": true,
+    "save_temp": true,
+    "save_temp_ttl_enable": true,
+    "save_temp_ttl": "30d",
+    "load_gist": false,
+    "load_elasticsearch": true,
+    "load_elasticsearch_size": 20,
+    "load_local": false,
+    "hide": false
+  },
+  "refresh": false
+}

@@ -1,0 +1,15 @@
+Tools for importing IBM-JVM Garbage-Collection logs to logstash
+
+author: Klaus Lochmann (klaus.lochmann@gmail.com)
+
+Java-Program: gclog.Main
+	Read the GC-logs in XML format, and produce a tab-separated output
+	
+Java-Program: unique.Main
+	Read the tab-separated format, and do not output already seen lines. Prevents adding duplicate entries to logstash.
+	
+Logstash-config: readGCLog.conf
+	Read the tab-separated format, parse it and deliver it to elasticsearch.
+	
+Bash-Script: readGCLogPeriodicallyAndDeliver.sh
+	Poll for GC-logs and process them using the above-mentioned scripts.
